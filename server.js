@@ -32,10 +32,25 @@ const manifest = {
 
 exports.start = () => {
   return fromNode(Glue.compose.bind(Glue, manifest, options))
-    .then(server => {
+    .bind({})
+    .then(function (server) {
+      this.server = server;
       return fromNode(server.start.bind(server));
     })
-    .then(() => {
+    .then(function () {
+      // Serve static assets.
+      this.server.route({
+        method: 'GET',
+        path: '/public/{param*}',
+        handler: {
+          directory: {
+            path: 'public',
+            listing: true
+          }
+        }
+      });
+    })
+    .then(function () {
       manifest.connections.forEach(conn => {
         logger.info(`Hapi server started at: ${conn.port}`);
       });

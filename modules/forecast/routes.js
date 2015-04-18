@@ -4,10 +4,18 @@ const Joi = require('joi');
 const handlers = require('./handlers');
 const pkg = require('./package.json');
 
-// Workaround for https://github.com/hapijs/hapi/issues/2278
-function addViewManager(request) {
+function renderTemplate(request, reply) {
+  // Workaround for https://github.com/hapijs/hapi/issues/2278
   let server = request.server.plugins[pkg.name];
   server.addViewManager(request.server);
+
+  if (!request.response) {
+    return reply(null);
+  }
+  if (request.response.isBoom) {
+    return reply.view('error', request.response);
+  }
+  return reply.view('forecast', request.response);
 }
 
 
@@ -26,10 +34,7 @@ module.exports = {
       plugins: {
         'hapi-negotiator': {
           mediaTypes: {
-            'text/html': (request, reply) => {
-              addViewManager(request);
-              reply.view('forecast', request.response.source);
-            }
+            'text/html': renderTemplate
           }
         }
       }
@@ -46,7 +51,14 @@ module.exports = {
           location: Joi.string().alphanum()
         }
       },
-      pre: [{method: handlers.fetchCoordinates, assign: 'coordinates'}]
+      pre: [{method: handlers.fetchCoordinates, assign: 'coordinates'}],
+      plugins: {
+        'hapi-negotiator': {
+          mediaTypes: {
+            'text/html': renderTemplate
+          }
+        }
+      }
     },
     handler: handlers.getWeatherForToday
   },
@@ -64,7 +76,14 @@ module.exports = {
           ])
         }
       },
-      pre: [{method: handlers.fetchCoordinates, assign: 'coordinates'}]
+      pre: [{method: handlers.fetchCoordinates, assign: 'coordinates'}],
+      plugins: {
+        'hapi-negotiator': {
+          mediaTypes: {
+            'text/html': renderTemplate
+          }
+        }
+      }
     },
     handler: handlers.getWeatherForDayOfWeek
   }

@@ -4,7 +4,6 @@ const forecast = require('./../wrappers/forecast');
 const geocoder = require('./../wrappers/geocoding');
 const moment = require('moment');
 const Boom = require('boom');
-//const logger = require('winston');
 
 /**
  * Route prerequisite.
@@ -17,12 +16,11 @@ exports.fetchCoordinates = function (request, reply) {
     return reply(Boom.badData('missing location'));
   }
 
-  const result = geocoder.getCoordinatesForLocation(loc)
+  geocoder.getCoordinatesForLocation(loc)
     .then(coords => {
-      return coords ? coords : Boom.badData('unrecognized location');
-    });
-
-  return reply(result);
+      reply(coords ? coords : Boom.badData('unrecognized location'));
+    })
+    .catch(reply);
 };
 
 
@@ -33,9 +31,9 @@ exports.fetchCoordinates = function (request, reply) {
 exports.getWeather = (request, reply) => {
   const {longitude, latitude} = request.pre.coordinates;
 
-  const result = forecast.get(latitude, longitude);
-
-  return reply(result);
+  forecast.get(latitude, longitude)
+    .then(reply)
+    .catch(reply);
 };
 
 /**
@@ -46,9 +44,9 @@ exports.getWeatherForToday = (request, reply) => {
   const {longitude, latitude} = request.pre.coordinates;
   const now = moment().toISOString();
 
-  const result = forecast.getAtTime(latitude, longitude, now);
-
-  return reply(result);
+  forecast.getAtTime(latitude, longitude, now)
+    .then(reply)
+    .catch(reply);
 };
 
 /**
@@ -64,7 +62,7 @@ exports.getWeatherForDayOfWeek = (request, reply) => {
   // If requested day is today or earlier, add a week.
   const time = requestedDay > now ? requestedDay : requestedDay.add(1, 'week');
 
-  const result = forecast.getAtTime(latitude, longitude, time);
-
-  return reply(result);
+  forecast.getAtTime(latitude, longitude, time.toISOString())
+    .then(reply)
+    .catch(reply);
 };

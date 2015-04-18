@@ -1,0 +1,26 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+.error {
+  color: red;
+}
+
+.forecast {
+  border-bottom: 1px black solid;
+  margin-bottom: 1em;
+  padding: 10px;
+}
+
+.location {
+  border-bottom: 1px black solid;
+  margin-bottom: 1em;
+  padding: 10px;
+}
+
+.buttons {
+  input {
+    margin-right: 10px;
+  }
+  padding: 10px;
+}

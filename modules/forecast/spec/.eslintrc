@@ -1,0 +1,11 @@
+rules:
+  no-unused-expressions: 0 #has problems with expect
+  max-nested-callbacks: [1, 10]
+
+globals:
+  describe: false
+  it: false
+  afterEach: false
+  after: false
+  beforeEach: false
+  before: false

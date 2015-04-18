@@ -6,7 +6,7 @@ var logger = require('winston');
 require('babel/register')({
   blacklist: [],
   optional: [
-    'validation.undeclaredVariableCheck',
+    'validation.undeclaredVariableCheck'
   ],
   extensions: ['.js'] // which extensions should be transpiled by babel
 });
