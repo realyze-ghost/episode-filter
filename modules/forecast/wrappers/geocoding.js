@@ -14,6 +14,12 @@ module.exports = {
   // Useful for testing.
   _geocoder: geocoder,
 
+  /*
+   * Returns a promise for {latitude, longitude} object for the
+   * provided location string or promise for `null` if the location isn't
+   * recognized.
+   * Uses Google geocoding API.
+   */
   getCoordinatesForLocation: (location) => {
     const result = geocoder.geocode(location)
       .then(res => {
