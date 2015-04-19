@@ -6,6 +6,9 @@ forecast weather.
 It can also display a soothing photograph of Nicolas Cage. But that's just
 a bonus feature, really.
 
+Frontend is based on [react-starterify](https://github.com/Granze/react-starterify),
+quite possibly the best lightweight react skeleton out there.
+
 ### How do you install and run me?
 Well, you know the usual drill:
 
