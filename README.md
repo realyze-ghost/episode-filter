@@ -20,6 +20,10 @@ To run tests, do
 
     npm test
 
+### Do I run anywhere?
+Why, yes, I do! Go to http://simplistic-forecast.herokuapp.com/public/ and try
+me out!
+
 ### Prerequisites
 
 The app requires following env vars to be set:
