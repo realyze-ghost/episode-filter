@@ -240,8 +240,8 @@ describe('forecast routes', function () {
 
     });
 
-    testGeolocationFailure('/weather/sydney/today');
-    testForecastFailure('/weather/sydney/today');
+    testGeolocationFailure('/weather/sydney/thursday');
+    testForecastFailure('/weather/sydney/thursday');
   });
 
 });
