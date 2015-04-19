@@ -25,6 +25,8 @@ module.exports = {
     method: 'GET',
     path: '/weather/{location}',
     config: {
+      description: 'Returns current weather for the given location (using the ' +
+        'timeless version of forecast.io API',
       validate: {
         params: {
           location: Joi.string().alphanum()
@@ -46,6 +48,8 @@ module.exports = {
     method: 'GET',
     path: '/weather/{location}/today',
     config: {
+      description: 'Returns weather forecast for today for the given location ' +
+        '(using forecast.io API)',
       validate: {
         params: {
           location: Joi.string().alphanum()
@@ -67,6 +71,10 @@ module.exports = {
     method: 'GET',
     path: '/weather/{location}/{dayOfWeek}',
     config: {
+      description: 'Returns weather forecast for the given day and given location' +
+        '(using forecast.io API).',
+      notes: 'The day is always in the future. If you want today\'s forecast, use ' +
+        '`/weather/{location}/today` endpoint.',
       validate: {
         params: {
           location: Joi.string().alphanum(),

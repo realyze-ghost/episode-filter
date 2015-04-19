@@ -47,6 +47,9 @@ exports.start = () => {
             path: 'public',
             listing: true
           }
+        },
+        config: {
+          description: 'Serves static assets.'
         }
       });
     })
