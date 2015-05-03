@@ -40,9 +40,6 @@ exports.start = () => {
     })
 
     .then(function () {
-      this.server.on('request-error', (err) => {
-        console.log(err);
-      });
       manifest.connections.forEach(conn => {
         logger.info(`Hapi server started at: ${conn.port}`);
       });
