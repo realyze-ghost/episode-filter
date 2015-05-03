@@ -1,0 +1,53 @@
+{
+    "payload": [
+        {
+            "drm": true,
+            "episodeCount": 3,
+            "genre": "Reality",
+            "image": {
+            },
+            "language": "English",
+            "nextEpisode": null,
+            "primaryColour": "#ff7800",
+            "seasons": [
+                {
+                    "slug": "show/16kidsandcounting/season/1"
+                }
+            ],
+            "slug": "show/16kidsandcounting",
+            "title": "16 Kids and Counting",
+            "tvChannel": "GEM"
+        },
+        {
+            "slug": "show/seapatrol",
+            "title": "Sea Patrol",
+            "tvChannel": "Channel 9"
+        },
+            "country": "AUS",
+            "description": "Join the most dynamic TV judging panel Australia has ever seen as they uncover the next breed of superstars every Sunday night. UK comedy royalty Dawn French, international pop superstar Geri Halliwell, (in) famous Aussie straight-talking radio jock Kyle Sandilands, and chart -topping former AGT alumni Timomatic.",
+            "drm": false,
+            "episodeCount": 0,
+            "genre": "Reality",
+            "image": {
+                "showImage": "http://catchup.ninemsn.com.au/img/jump-in/shows/AGT.jpg"
+            },
+            "language": "English",
+            "nextEpisode": {
+                "channel": null,
+                "channelLogo": "http://catchup.ninemsn.com.au/img/player/Ch9_new_logo.gif",
+                "date": null,
+                "html": "Next episode airs:<span>6:30pm Sunday on<br><span class=\"visit\">Visit the Official Website</span></span>",
+                "url": "http://agt.ninemsn.com.au"
+            },
+            "primaryColour": "#df0000",
+            "seasons": null,
+            "slug": "show/australiasgottalent",
+            "title": "Australia's Got Talent",
+            "tvChannel": "Channel 9"
+        }
+    ],
+    "skip": 0,
+    "take": 10,
+    "totalRecords": 75
+}
+
